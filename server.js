@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { WebcastConnection } = require('tiktok-live-connector');
+const { WebcastPushConnection } = require('tiktok-live-connector');
 
 const app = express();
 app.use(cors());
@@ -63,7 +63,7 @@ app.post('/api/connect', (req, res) => {
 
     addEvent("SYSTEM", `Connecting to live: @${username}...`, "chat");
 
-    tiktokConnection = new WebcastConnection(username);
+    tiktokConnection = new WebcastPushConnection(username);
 
     tiktokConnection.connect().then(state => {
         addEvent("SYSTEM", `Successfully connected to Live!`, "join");
